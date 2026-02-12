@@ -10,13 +10,22 @@
    3. `sudo apt full-upgrade`
    4. `sudo apt autoremove`
 
-## Install Java (cur ver11)
+## Install Java (required: Java 21 LTS)
 
-Detailed instructions found
-[here](https://www.digitalocean.com/community/tutorials/how-to-install-java-with-apt-on-ubuntu-18-04)
+> **Important:** This project requires **Java 21**. The build will fail with
+> older versions (Java 8, 11, or 17).
 
-1. `sudo apt install default-jdk`
-2. `java -version`
+**Option A: Using SDKMAN (recommended)**
+
+1. Install SDKMAN: `curl -s "https://get.sdkman.io" | bash`
+2. `sdk install java 21.0.1-tem`
+3. `sdk use java 21.0.1-tem`
+4. `java -version` (verify output shows version 21)
+
+**Option B: Using apt (Ubuntu/Debian)**
+
+1. `sudo apt install openjdk-21-jdk`
+2. `java -version` (verify output shows version 21)
 3. `javac -version`
 
 ## Install Docker
