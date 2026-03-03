@@ -378,6 +378,7 @@ public class SampleEditServiceImpl implements SampleEditService {
         analysis.setTest(test);
         analysis.setIsReportable(test.getIsReportable());
         analysis.setAnalysisType(DEFAULT_ANALYSIS_TYPE);
+        analysis.setMethod(test.getMethod());
         analysis.setSampleItem(sampleTestCollection.item);
         analysis.setSysUserId(sampleTestCollection.item.getSysUserId());
         analysis.setRevision("0");
@@ -455,6 +456,7 @@ public class SampleEditServiceImpl implements SampleEditService {
                     analysis.setIsReportable(test.getIsReportable());
                     analysis.setAnalysisType("MANUAL");
                     analysis.setStartedDate(DateUtil.getNowAsSqlDate());
+                    analysis.setMethod(test.getMethod());
                 }
 
                 analysis.setStatusId(
