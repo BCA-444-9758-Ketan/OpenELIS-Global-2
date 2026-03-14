@@ -1387,6 +1387,7 @@ public class AnalyzerResultsController extends BaseController {
             analysis.setTest(test);
             analysis.setTestSection(test.getTestSection());
             analysis.setIsReportable(test.getIsReportable());
+            analysis.setMethod(test.getMethod());
             analysis.setRevision("0");
         }
     }

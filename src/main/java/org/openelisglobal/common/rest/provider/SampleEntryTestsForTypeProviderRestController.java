@@ -29,6 +29,7 @@ import org.openelisglobal.test.service.TestServiceImpl;
 import org.openelisglobal.test.valueholder.Test;
 import org.openelisglobal.typeofsample.service.TypeOfSamplePanelService;
 import org.openelisglobal.typeofsample.service.TypeOfSampleService;
+import org.openelisglobal.typeofsample.valueholder.TypeOfSample;
 import org.openelisglobal.typeofsample.valueholder.TypeOfSamplePanel;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
@@ -105,6 +106,27 @@ public class SampleEntryTestsForTypeProviderRestController extends BaseRestContr
             throws ServletException, IOException {
 
         return userService.getUserPrograms(getSysUserId(request), Constants.ROLE_RECEPTION);
+    }
+
+    /**
+     * Returns a map of sample type ID to default unit of measure ID for all sample
+     * types that have a default unit of measure configured. Used by the frontend to
+     * auto-populate the unit of measure field when a sample type is selected.
+     *
+     * @return map of {@code sampleTypeId -> defaultUomId}; only entries for sample
+     *         types with a default UoM are included
+     */
+    @GetMapping(value = "sample-type-default-uoms", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseBody
+    public Map<String, String> getSampleTypeDefaultUoms() {
+        Map<String, String> typeUomMap = new HashMap<>();
+        List<TypeOfSample> allTypes = typeOfSampleService.getAllTypeOfSamples();
+        for (TypeOfSample typeOfSample : allTypes) {
+            if (typeOfSample.getDefaultUnitOfMeasure() != null) {
+                typeUomMap.put(typeOfSample.getId(), typeOfSample.getDefaultUnitOfMeasure().getId());
+            }
+        }
+        return typeUomMap;
     }
 
     private void createSearchResultXML(String sampleType, List<String> testUnitIds) {

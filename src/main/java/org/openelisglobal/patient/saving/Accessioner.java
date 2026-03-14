@@ -1039,6 +1039,7 @@ public abstract class Accessioner implements IAccessioner {
         analysis.setTest(test);
         analysis.setIsReportable(test.getIsReportable());
         analysis.setAnalysisType(DEFAULT_ANALYSIS_TYPE);
+        analysis.setMethod(test.getMethod());
         analysis.setSampleItem(sampleTestCollection.item);
         analysis.setRevision(analysisRevision);
         analysis.setStartedDate(collectionDateTime);

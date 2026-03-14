@@ -110,6 +110,7 @@ export default function GenericSampleOrder({
   // Dropdown lists
   const [sampleTypes, setSampleTypes] = useState([]);
   const [uoms, setUoms] = useState([]);
+  const [sampleTypeUomMap, setSampleTypeUomMap] = useState({});
   const [labNoLoading, setLabNoLoading] = useState(false);
 
   // Success state
@@ -129,6 +130,11 @@ export default function GenericSampleOrder({
     if (showSampleType) {
       getFromOpenElisServer("/rest/user-sample-types", (res) => {
         setSampleTypes(res || []);
+      });
+      getFromOpenElisServer("/rest/sample-type-default-uoms", (res) => {
+        if (res) {
+          setSampleTypeUomMap(res);
+        }
       });
     }
     if (showUom) {
@@ -629,7 +635,12 @@ export default function GenericSampleOrder({
                     />
                   }
                   value={defaultForm.sampleTypeId}
-                  onChange={(v) => updateDefaultField("sampleTypeId", v)}
+                  onChange={(v) => {
+                    updateDefaultField("sampleTypeId", v);
+                    if (sampleTypeUomMap[v] && showUom && !defaultForm.sampleUnitOfMeasure) {
+                      updateDefaultField("sampleUnitOfMeasure", sampleTypeUomMap[v]);
+                    }
+                  }}
                   options={sampleTypes.map((s) => ({
                     id: s.id,
                     value: s.value,

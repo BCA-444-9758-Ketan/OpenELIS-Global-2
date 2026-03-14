@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataset>
+    <!-- Localization entries for sample types -->
+    <localization id="1" description="whole blood" />
+    <localization id="2" description="Urine" />
+    <localization_value id="1" localization_id="1" locale="en" value="Blood" />
+    <localization_value id="2" localization_id="1" locale="fr" value="sang" />
+    <localization_value id="3" localization_id="2" locale="en" value="Urine" />
+    <localization_value id="4" localization_id="2" locale="fr" value="Urine" />
+    <supported_locale id="1" locale_code="en" display_name="English" is_active="true"
+        is_fallback="true" sort_order="1" />
+    <supported_locale id="2" locale_code="fr" display_name="Français" is_active="true"
+        is_fallback="false" sort_order="2" />
+
+    <!-- Unit of Measure entries -->
+    <unit_of_measure id="1" name="mg/dL" description="Milligrams per deciliter" />
+    <unit_of_measure id="2" name="g/L" description="Grams per liter" />
+
+    <!-- TypeOfSample entries: id=1 has default_uom_id set, id=2 does not -->
+    <type_of_sample id="1" description="whole blood" domain="H"
+        lastupdated="2023-11-01 12:00:00" local_abbrev="blood" is_active="true"
+        sort_order="4" name_localization_id="1" display_key="sample.type.Sang"
+        default_uom_id="1" />
+    <type_of_sample id="2" description="Urine" domain="H"
+        lastupdated="2023-11-01 12:00:00" local_abbrev="urine" is_active="true"
+        sort_order="5" name_localization_id="2" display_key="sample.type.Urines" />
+</dataset>
