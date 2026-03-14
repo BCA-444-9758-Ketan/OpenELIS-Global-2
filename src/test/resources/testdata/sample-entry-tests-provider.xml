@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<dataset>
+    <!-- localization entries for type_of_sample names -->
+    <localization id="1" description="Blood Sample" />
+    <localization id="2" description="Urine Sample" />
+    <localization_value id="1" localization_id="1" locale="en" value="Blood Sample" />
+    <localization_value id="2" localization_id="1" locale="fr" value="Échantillon de sang" />
+    <localization_value id="3" localization_id="2" locale="en" value="Urine Sample" />
+    <localization_value id="4" localization_id="2" locale="fr" value="Échantillon d'urine" />
+    <supported_locale id="1" locale_code="en" display_name="English" is_active="true"
+        is_fallback="true" sort_order="1" />
+    <supported_locale id="2" locale_code="fr" display_name="Français" is_active="true"
+        is_fallback="false" sort_order="2" />
+
+    <!-- unit_of_measure -->
+    <unit_of_measure id="1" name="mg/dL" description="Milligrams per deciliter" />
+    <unit_of_measure id="2" name="g/L" description="Grams per liter" />
+
+    <!-- type_of_sample: id=1 has a default_uom_id; id=2 does not -->
+    <type_of_sample id="1" description="Blood Sample" domain="H"
+        name_localization_id="1" lastupdated="2024-01-01 00:00:00"
+        default_uom_id="1" />
+    <type_of_sample id="2" description="Urine Sample" domain="H"
+        name_localization_id="2" lastupdated="2024-01-01 00:00:00" />
+</dataset>
